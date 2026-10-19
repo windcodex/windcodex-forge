@@ -31,6 +31,11 @@ class WCFORGE_Activity_Log {
 	}
 
 	public static function record( $user_id, $tool_name, $summary, $success = true ) {
+		// Settings > WindCodex Forge > General > Preferences > Keep activity log.
+		if ( ! WCFORGE_Settings::instance()->get( 'log_ai_activity', true ) ) {
+			return;
+		}
+
 		global $wpdb;
 		$wpdb->insert( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 			$wpdb->prefix . 'wcforge_activity_log',

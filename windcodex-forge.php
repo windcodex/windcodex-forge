@@ -3,7 +3,7 @@
  * Plugin Name:       WindCodex Forge – Read-Only AI Diagnostics
  * Plugin URI:        https://windcodex.com/
  * Description:       Gives Claude, ChatGPT, and other MCP-compatible AI coding assistants safe, read-only access to inspect a WordPress site: installed plugins, theme, hooks, files, database structure and data, Gutenberg content blocks, and cross-conversation memory. No write or code-execution capability of any kind, so it's safe to run on a live site.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            WindCodex
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'WCFORGE_VERSION', '1.0.0' );
+define( 'WCFORGE_VERSION', '1.0.1' );
 define( 'WCFORGE_PLUGIN_FILE', __FILE__ );
 define( 'WCFORGE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WCFORGE_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

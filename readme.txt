@@ -3,7 +3,7 @@ Contributors: windcodex
 Tags: claude, chatgpt, mcp server, ai agent, debugging
 Requires at least: 6.2
 Tested up to: 7.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -40,6 +40,7 @@ Plus, in the plugin's settings:
 * **Access control** – choose who may approve an AI connection (Administrators only by default, or Editors and above). Each connection is limited to that person's own permissions and stops working as soon as they lose the role.
 * **Activity log** – every tool call, successful or not, is recorded with its arguments, the user whose connection made it, and when.
 * **Per-tool switches** – turn any individual tool off.
+* **Activity log preference** – keep the log on (default) or turn recording off.
 
 A flat 120 requests/minute rate limit applies.
 
@@ -178,6 +179,12 @@ The File read tool is scoped to wp-content (themes, plugins, uploads) only – i
 
 == Changelog ==
 
+= 1.0.1 =
+* Added: "Keep activity log" preference (Settings > WindCodex Forge > General) to stop recording new tool calls.
+* Improved: Every tool call from an authorized connection is now recorded in the activity log, including calls the plugin rejects (unknown or disabled tool, account not allowed to connect).
+* Fixed: Admin notices are now translatable.
+* Fixed: Readme requirement now matches the plugin (WordPress 6.2 or higher).
+
 = 1.0.0 =
 Initial release of WindCodex Forge as its own standalone, entirely free, read-only plugin.
 
@@ -187,6 +194,9 @@ Initial release of WindCodex Forge as its own standalone, entirely free, read-on
 * Login credentials never returned by the database tool.
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Adds a "Keep activity log" preference and logs rejected tool calls too. No upgrade steps required.
 
 = 1.0.0 =
 Initial release – no upgrade steps required.
