@@ -116,6 +116,7 @@ class WCFORGE_Admin {
 				'requests_per_minute_limit'  => max( 10, min( 600, absint( $_POST['requests_per_minute_limit'] ?? 120 ) ) ),
 				'allow_dynamic_registration' => ! empty( $_POST['allow_dynamic_registration'] ),
 				'delete_data_on_uninstall'   => ! empty( $_POST['delete_data_on_uninstall'] ),
+				'log_ai_activity'            => ! empty( $_POST['log_ai_activity'] ),
 			)
 		);
 
@@ -1030,6 +1031,17 @@ class WCFORGE_Admin {
 			</div>
 
 			<div class="wcforge-card">
+				<div class="wcforge-section-title"><?php WCFORGE_Icons::render( 'shield-check' ); ?> Preferences</div>
+				<div class="wcforge-field-row wcforge-toggle-row">
+					<div>
+						<span class="wcforge-field-label">Keep activity log</span>
+						<p class="wcforge-field-desc">Record every AI tool call – what ran, when, and whether it succeeded – on the Activity tab. Turning this off stops recording new calls; entries already saved stay until you clear them.</p>
+					</div>
+					<label class="wcforge-switch"><input type="checkbox" name="log_ai_activity" value="1" <?php checked( $settings['log_ai_activity'] ?? true ); ?> /><span class="wcforge-slider"></span></label>
+				</div>
+			</div>
+
+			<div class="wcforge-card">
 				<div class="wcforge-section-title"><?php WCFORGE_Icons::render( 'shield' ); ?> Data &amp; Privacy</div>
 				<div class="wcforge-field-row wcforge-toggle-row">
 					<div>
@@ -1076,6 +1088,10 @@ class WCFORGE_Admin {
 		$entries = WCFORGE_Activity_Log::get_recent( 30 );
 		?>
 		<p class="wcforge-lede">Every tool call made through this connector is recorded here, in full detail.</p>
+
+		<?php if ( ! WCFORGE_Settings::instance()->get( 'log_ai_activity', true ) ) : ?>
+			<div class="notice notice-warning inline"><p>The activity log is turned off, so new calls are not being recorded. Turn it back on under General &rarr; Preferences.</p></div>
+		<?php endif; ?>
 
 		<div class="wcforge-card">
 			<div class="wcforge-toggle-row" style="margin-bottom:16px;">
