@@ -41,6 +41,7 @@ class WCFORGE_Settings {
 			'requests_per_minute_limit'  => 120,
 			'allow_dynamic_registration' => true,
 			'delete_data_on_uninstall'   => false,
+			'log_ai_activity'            => true,
 			// Per-primitive on/off. Every primitive here is read-only, so
 			// there's no risk tier to weigh against a live-site check -
 			// all default on.

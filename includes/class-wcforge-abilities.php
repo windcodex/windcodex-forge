@@ -62,7 +62,7 @@ class WCFORGE_Abilities {
 			self::CATEGORY,
 			array(
 				'label'       => __( 'WindCodex Forge', 'windcodex-forge' ),
-				'description' => __( 'Code execution, WP-CLI, file, and database actions exposed by WindCodex Forge.', 'windcodex-forge' ),
+				'description' => __( 'Read-only site, file, database, and content-block inspection tools, plus memory notes, exposed by WindCodex Forge.', 'windcodex-forge' ),
 			)
 		);
 	}
@@ -70,10 +70,9 @@ class WCFORGE_Abilities {
 	/**
 	 * Registers every tool from WCFORGE_Tools::get_tool_definitions() as a
 	 * native WP Ability. Runs on every request that reaches this hook, so
-	 * the production-site lock, per-primitive toggles, and read-only mode
-	 * (all already applied inside get_tool_definitions()) are reflected
-	 * automatically — a blocked-on-production site registers zero dev tools
-	 * through this path too.
+	 * per-primitive toggles and read-only mode (both already applied inside
+	 * get_tool_definitions()) are reflected automatically — a tool switched
+	 * off in Settings is not registered through this path either.
 	 */
 	public function register_abilities() {
 		if ( ! function_exists( 'wp_register_ability' ) ) {
